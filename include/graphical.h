@@ -20,9 +20,14 @@
 #define S_HEIGHT 720
 
 typedef struct button_s {
-    /* data */
+    sfSprite *dark_icon;
+    sfSprite *light_icon;
+    int active_state; //State of the window on which to display this button
+    sfVector2f pos;
+    sfVector2f dimensions;
+    int (*action)(struct graphic_s *graph);
+    struct button_s *next;
 } button_t;
-
 
 typedef struct window_s {
     sfRenderWindow *window;
@@ -32,10 +37,10 @@ typedef struct window_s {
     double time;
 } window_t;
 
-typedef struct programm_s {
+typedef struct graphic_s {
     struct window_s *win;
     int dark_mode;
-} programm_t;
+} graphic_t;
 
 window_t *init_window();
 int window_loop(void);
