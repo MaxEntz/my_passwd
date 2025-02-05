@@ -48,6 +48,10 @@ typedef struct button_s {
 
 // Prototypes
 window_t *init_window();
+graphic_t *init_graph();
+void manage_events(graphic_t *graph);
+void display_buttons(graphic_t *graph);
 int window_loop(void);
+int change_color_mode(graphic_t *graph);
 
 #endif /* GRAPHICAL_H_ */
