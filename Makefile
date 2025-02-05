@@ -13,6 +13,7 @@ SRC	=	src/main_passwd.c\
 		src/log_in.c\
 		src/create_account.c\
 		src/choice_exit.c\
+    src/hash_function.c\
 		src/graphical/main_loop.c\
 
 LIB_SRC	=	lib/my/my_putchar.c\
@@ -29,10 +30,12 @@ NAME	=	my_passwd
 
 CFLAGS	= -lm -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -g
 
+CRYPT_FLAGS = -lcrypt
+
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	gcc -o $(NAME) $(OBJ) $(CFLAGS) -I./include
+	gcc -o $(NAME) $(OBJ) $(CFLAGS) -lcrypt -I./include
 
 clean:
 	rm -f $(OBJ)

@@ -17,5 +17,6 @@ int print_help(void);
 int exit_choice(void);
 int log_in(void);
 int create_account(void);
+char *hash_password(const char *password);
 
 #endif /* MY_PASSWD_H_ */

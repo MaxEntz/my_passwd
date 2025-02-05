@@ -13,7 +13,7 @@ int main_passwd(void)
     int choice = 0;
     int (*ptr[3])(void) = {&create_account, &log_in, &exit_choice};
 
-    printf("(1) Create a account\t(2) Log in\t(3) Exit\nYour choice:");
+    printf("(1) Create a account\t(2) Log in\t(3) Exit\nYour choice: ");
     scanf("%d", &choice);
     if (choice < 1 || choice > 3)
         return 84;
