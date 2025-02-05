@@ -13,12 +13,14 @@ SRC	=	src/main_passwd.c\
 		src/log_in.c\
 		src/create_account.c\
 		src/choice_exit.c\
-		src/hash_function.c\
+    src/hash_function.c\
+		src/graphical/main_loop.c\
 
 LIB_SRC	=	lib/my/my_putchar.c\
 			lib/my/my_putstr.c\
 			lib/my/my_strcmp.c\
 			lib/my/my_strlen.c\
+			lib/my/my_puterror.c\
 
 OBJ	=	$(MAIN_FILE:.c=.o) $(SRC:.c=.o) $(LIB_SRC:.c=.o)
 

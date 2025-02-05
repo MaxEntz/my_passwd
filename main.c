@@ -6,8 +6,10 @@
 */
 
 #include "./include/my_passwd.h"
+#include "./include/graphical.h"
 
 int main(int ac, char **av)
 {
+    return window_loop();
     return my_passwd(ac, av);
 }
