@@ -21,4 +21,3 @@ jobs:
         id: style-check
         run: |
           sudo curl -fsSL https://raw.githubusercontent.com/xschahl/Epitech-Coding-Style-Checker/main/coding-style.sh | bash -s . .
-        continue-on-error: true
