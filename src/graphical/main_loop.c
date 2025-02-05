@@ -26,18 +26,29 @@ window_t *init_window()
 
 int window_loop(void)
 {
-    window_t *win = init_window();
+    graphic_t *graph = malloc(sizeof(graphic_t));
 
-    while (sfRenderWindow_isOpen(win->window)) {
+    if (!graph)
+        exit(my_puterror("Invalid MALLOC at | window loop |\n"));
+    graph->win = init_window();
+    graph->dark_mode = 1;
+
+    while (sfRenderWindow_isOpen(graph->win->window)) {
         // EVENTS
-        while (sfRenderWindow_pollEvent(win->window, &win->event)) {
-            if (win->event.type == sfEvtClosed)
-                sfRenderWindow_close(win->window);
+        while (sfRenderWindow_pollEvent(graph->win->window, &graph->win->event)) {
+            if (graph->win->event.type == sfEvtClosed)
+                sfRenderWindow_close(graph->win->window);
         }
 
-        sfRenderWindow_clear(win->window, sfColor_fromRGB(25, 23, 23));
-        sfRenderWindow_display(win->window);
+        // BACKGROUND FILL
+        if (graph->dark_mode == 1)
+            sfRenderWindow_clear(graph->win->window, sfColor_fromRGB(25, 23, 23));
+        else
+            sfRenderWindow_clear(graph->win->window, sfWhite);
+
+        sfRenderWindow_display(graph->win->window);
     }
-    sfRenderWindow_destroy(win->window);
+    sfRenderWindow_destroy(graph->win->window);
+    free(graph);
     return 0;
 }
