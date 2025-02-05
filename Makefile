@@ -20,6 +20,7 @@ LIB_SRC	=	lib/my/my_putchar.c\
 			lib/my/my_strcmp.c\
 			lib/my/my_strlen.c\
 			lib/my/my_puterror.c\
+			lib/my/my_str_concat.c\
 
 OBJ	=	$(MAIN_FILE:.c=.o) $(SRC:.c=.o) $(LIB_SRC:.c=.o)
 
