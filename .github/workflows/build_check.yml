@@ -1,0 +1,14 @@
+name: Build Check
+
+on: [push, pull_request]
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    container:
+      image: epitechcontent/epitest-docker:latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: make
+        run: make

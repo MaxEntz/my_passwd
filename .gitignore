@@ -1,0 +1,25 @@
+# compilation files:
+*.o
+*.out
+*.gcno
+*.gcda
+###
+
+# environement files:
+.vscode/
+*.log
+###
+
+# mac-os files:
+*.out.*/
+**/*.DS_Store
+###
+
+# git actions files:
+
+###
+
+# project files:
+my_passwd
+unit_tests
+###

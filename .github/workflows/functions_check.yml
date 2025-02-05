@@ -1,0 +1,57 @@
+name: Check Forbidden Functions
+
+on: [push, pull_request]
+
+jobs:
+  check-functions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read forbidden functions
+        id: read_rules
+        run: |
+          RULES_FILE=".github/workflows/forbidden_functs"
+
+          if [[ ! -f "$RULES_FILE" ]]; then
+            echo "❌ ERROR: $RULES_FILE not found!"
+            exit 1
+          fi
+
+          FORBIDDEN_FUNCTIONS=$(tail -n +2 "$RULES_FILE" | tr '\n' '|' | sed 's/|$//')
+
+          if [[ -z "$FORBIDDEN_FUNCTIONS" ]]; then
+            echo "🔍 INFO: No forbidden functions listed in $RULES_FILE!"
+            exit 0
+          fi
+
+          echo "Forbidden functions: $FORBIDDEN_FUNCTIONS"
+          echo "functions=$FORBIDDEN_FUNCTIONS" >> $GITHUB_ENV
+
+      - name: Scan repository for forbidden functions
+        run: |
+          FUNCTIONS="${{ env.functions }}"
+          echo "🔍 Scanning for forbidden functions: $FUNCTIONS"
+
+          # Find all source code files
+          FILES=$(find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.cpp" -o -name "*.py" -o -name "*.java" \))
+
+          VIOLATIONS=0
+          for file in $FILES; do
+            MATCHES=$(grep -nE "\b($FUNCTIONS)\b" "$file" || true)
+
+            if [[ -n "$MATCHES" ]]; then
+              echo "🚨 Forbidden functions found in: $file"
+              echo "$MATCHES"
+              VIOLATIONS=1
+            fi
+          done
+
+          if [[ $VIOLATIONS -ne 0 ]]; then
+            echo "🚨 Forbidden functions detected! Failing the workflow."
+            exit 1
+          fi
+
+          echo "✅ No forbidden functions found."
