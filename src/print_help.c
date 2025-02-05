@@ -6,6 +6,7 @@
 */
 
 #include "../include/my_passwd.h"
+#include "../include/my_lib.h"
 
 int print_help(void)
 {
