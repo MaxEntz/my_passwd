@@ -17,7 +17,8 @@ int main_passwd(void)
     scanf("%d", &choice);
     if (choice < 1 || choice > 3)
         return 84;
-    ptr[choice - 1]();
+    if (ptr[choice - 1]() == 1)
+        return 1;
     free(passwd);
     return 0;
 }

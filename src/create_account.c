@@ -6,6 +6,7 @@
 */
 
 #include "../include/my_passwd.h"
+#include "../include/my_lib.h"
 #include <sys/stat.h>
 #include <dirent.h>
 #include <sys/types.h>
@@ -83,5 +84,5 @@ int create_account(void)
         return 0;
     if (take_passwd(passwd_first, passwd_second, logname) == 84)
         return 84;
-    return 0;
+    return 1;
 }
