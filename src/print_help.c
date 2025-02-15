@@ -11,8 +11,10 @@
 int print_help(void)
 {
     my_putstr("USAGE\n");
-    my_putstr("\t./my_passwd\n\n");
+    my_putstr("    ./my_passwd [options] login\n\n");
     my_putstr("DESCRIPTION\n");
-    my_putstr("\tmy_passwd will create a password management\n");
+    my_putstr("    login    user login\n\n");
+    my_putstr("OPTIONS\n");
+    my_putstr("    -h    print the help and exit\n");
     return 0;
 }

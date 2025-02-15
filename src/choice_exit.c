@@ -7,5 +7,6 @@
 
 int exit_choice(void)
 {
+    my_putstr("Goodbye !\n");
     return 0;
 }
