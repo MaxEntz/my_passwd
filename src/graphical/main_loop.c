@@ -35,6 +35,7 @@ int window_loop(void)
     char *scenes_b_test[2] = {"test_scene"};
     create_button("test.jpeg", scenes_b_test, (sfVector2f){S_WIDTH / 2, S_HEIGHT / 2}, (sfVector2f){256, 256}, &change_color_mode, &graph);
 
+    printf("Window loop\n");
     while (sfRenderWindow_isOpen(graph->win->window)) {
         while (sfRenderWindow_pollEvent(graph->win->window, &graph->win->event))
             manage_events(graph);
