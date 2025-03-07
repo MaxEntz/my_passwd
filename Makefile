@@ -15,12 +15,17 @@ SRC	=	src/main_passwd.c\
 		src/choice_exit.c\
     src/hash_function.c\
 		src/graphical/main_loop.c\
+		src/graphical/init_structs.c\
+		src/graphical/manage_events.c\
+		src/graphical/display_elements.c\
+		src/graphical/scenes.c\
 
 LIB_SRC	=	lib/my/my_putchar.c\
 			lib/my/my_putstr.c\
 			lib/my/my_strcmp.c\
 			lib/my/my_strlen.c\
 			lib/my/my_puterror.c\
+			lib/my/my_str_concat.c\
 
 OBJ	=	$(MAIN_FILE:.c=.o) $(SRC:.c=.o) $(LIB_SRC:.c=.o)
 
