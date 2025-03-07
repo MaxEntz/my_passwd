@@ -17,6 +17,7 @@ SRC	=	src/main_passwd.c\
 		src/graphical/init_structs.c\
 		src/graphical/manage_events.c\
 		src/graphical/display_elements.c\
+		src/graphical/scenes.c\
 
 LIB_SRC	=	lib/my/my_putchar.c\
 			lib/my/my_putstr.c\
